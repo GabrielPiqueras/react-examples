@@ -8,21 +8,23 @@ export const taskReducer = ( state = [], action ) => {
             return [...state, action.payload];
 
         case 'delete': 
-            let newState = [...state];
-            let index = newState.findIndex(task => task.id == action.payload);
-            
-            newState.splice(index, 1);
-            return newState;
+            return state.filter(task => task.id != action.payload);
 
-        case 'complete': 
-            let newState2 = [...state];
-            let index2 = newState.findIndex(task => task.id == action.payload);
-            
-            newState2[index2].done = true;
-           
-            console.log(newState2);
-            return newState2;
-    
+        case 'toggle':
+            return state.map(task =>
+                (task.id === action.payload) 
+                    ? {...task, done: !task.done}
+                    : task
+            );
+
+        case 'toggle-old': 
+           return state.map(task => {
+               if (task.id === action.payload) {
+                    return { ...task, done: !task.done }
+               } else {
+                    return task;
+               }
+           });
         default:
             return state
     }

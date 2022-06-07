@@ -2,3 +2,7 @@
 body {
     padding: 10px;
 }
+
+pre,code {
+    margin-top: 50px;
+}

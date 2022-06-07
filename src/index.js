@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { HookApp } from './HookApp';
+
+import { HookApp } from './HookApp';
 // import { CounterApp } from './components/01-useState/CounterApp';
 // import { CounterWithCustomHook } from './components/01-useState/CounterWithCustomHook';
 // import { SimpleForm } from './components/02-useEffect/SimpleForm';
@@ -14,7 +15,7 @@ import ReactDOM from 'react-dom';
 // import { CallbackHook } from './components/07-useCallback/CallbackHook';
 // import { Padre } from './components/08-Tarea-memorize/Padre';
 // import './components/09-useReducer/intro-reducer';
-import { TasksApp } from './components/09-useReducer/TasksApp';
+// import { TasksApp } from './components/09-useReducer/TasksApp';
 // import './index.css';
 
 
@@ -27,5 +28,5 @@ import { TasksApp } from './components/09-useReducer/TasksApp';
 // ReactDOM.render(<RealExampleRef />, document.getElementById('root'));
 // ReactDOM.render(<Layout />, document.getElementById('root'));
 // ReactDOM.render(<Padre />, document.getElementById('root'));
-ReactDOM.render(<TasksApp />, document.getElementById('root'));
+ReactDOM.render(<HookApp />, document.getElementById('root'));
 

@@ -69,6 +69,12 @@ export const FormWithCustomHook = () => {
             <button type='submit' className='btn btn-primary'>
                 Enviar
             </button>
+
+            <pre>
+                <code>  
+                    { JSON.stringify(values) }
+                </code>
+            </pre>
         </form> 
     </>
   )
