@@ -1,12 +1,12 @@
 import React, { useRef } from 'react'
-import { useForm } from '../../hooks/useForm';
+import { useForm } from '../../../hooks/useForm';
 
 export const TaskAdd = ({ handleAddTask }) => {
 
-  // Refs
+  // Referencia al input de la descripción
   const inputDescription = useRef();
   
-  // Guardando datos del formulario
+  // Guardando datos del formulario usando el hook useForm()
   const [ values, handleInputChange, resetForm ] = useForm({description: ''});
   const { description } = values;
   

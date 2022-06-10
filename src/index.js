@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { MainApp } from './components/10-useContext/MainApp';
 
 import { HookApp } from './HookApp';
 // import { CounterApp } from './components/01-useState/CounterApp';
@@ -28,5 +29,7 @@ import { HookApp } from './HookApp';
 // ReactDOM.render(<RealExampleRef />, document.getElementById('root'));
 // ReactDOM.render(<Layout />, document.getElementById('root'));
 // ReactDOM.render(<Padre />, document.getElementById('root'));
-ReactDOM.render(<HookApp />, document.getElementById('root'));
+
+// ReactDOM.render(<HookApp />, document.getElementById('root'));
+ReactDOM.render(<MainApp />, document.getElementById('root'));
 

@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route
-} from "react-router-dom";
+} from 'react-router-dom';
 
 import './index.css';
 
@@ -15,6 +15,7 @@ import { Layout } from './components/05-useLayoutEffect/Layout.js';
 import { CallbackHook } from './components/07-useCallback/CallbackHook.js';
 import { Padre } from './components/08-Tarea-memorize/Padre.js';
 import { TasksApp } from './components/09-useReducer/TasksApp';
+import { MainApp } from './components/10-useContext/MainApp';
 
 export const HookApp = () => {
   return (
@@ -27,12 +28,13 @@ export const HookApp = () => {
           <li><a href='/use-layout-effect'>useLayoutEffect</a></li>
           <li><a href='/use-callback'>useCallback</a></li>
           <li><a href='/memorize'>Memorize</a></li>
-          {/* <li><a href='/task-app'>TaskApp</a></li> */}
-          <li><a href='/'>TaskApp</a></li>
+          <li><a href='/task-app'>TaskApp</a></li>
+          <li><a href='/'>useContext</a></li>
+          {/* <li><a href='/use-context'>useContext</a></li> */}
         </ul>
       </div>
       <div id='component' className='col-9'>
-        <Router>
+        {/* <Router>
             <Routes>
               <Route exact path="/counter-app" element={ <CounterWithCustomHook/> } />
               <Route exact path="/form-with-custom-hook" element={ <FormWithCustomHook/> } />
@@ -40,9 +42,10 @@ export const HookApp = () => {
               <Route exact path="/use-layout-effect" element={ <Layout/> } />
               <Route exact path="/use-callback" element={ <CallbackHook/> } />
               <Route exact path="/memorize" element={ <Padre/> } />
-              <Route exact path="/" element={ <TasksApp/> } />
+              <Route exact path="/task-app" element={ <TasksApp/> } />
+              <Route exact path="/" element={ <MainApp /> } />
             </Routes>
-        </Router>
+        </Router> */}
       </div>
     </div>
   )
