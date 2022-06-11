@@ -1,0 +1,80 @@
+<p>Para distribuir una variable a varios componentes, ya sea que estén al mismo nivel o no,
+    usaremos <mark class='mkf'>useContext()</mark>.</p>
+
+<p>Un <b>context</b> al final es un <b>componente</b>, así que centralizaremos esto en un archivo que crearemos, al cual
+podemos llamar <mark class='mkv'>UserContext.js</mark>, por ejemplo.</p>
+
+<p>Importamos la función <mark class='mkf'>createContext()</mark> de React para crear nuestro contexto, el cuál daremos valor por defecto <b>null</b>, meteremos en una variable y exportaremos para 
+poder usarlo donde queramos.</p>
+
+<pre><code class='language-js'>
+import { createContext } from 'react';
+
+export const userContext = createContext(null);
+</code></pre>
+
+<p>Obviamente, este componente puede tener otros componentes hijos. Lo que definamos dentro de <mark class='mkf'>createContext()</mark> estará disponible para 
+los componentes hijos que este decida "tener dentro" cuando lo usemos.</p>
+
+<p>Usamos el componente donde queramos aplicar el contexto.</p>
+<p>Para que <b>UserContext</b> pueda <b>proveer información a sus componentes hijos</b> necesitamos usar la propiedad <mark class='mkv'>.Provider</mark> para usarlo de esta forma.</p>
+
+<p>Ahora, usando el atributo <mark>value</mark> meteremos ahí lo que vamos a compartir o difundir en nuestro contexto, por ejemplo, los datos de un usuario que inició sesión:</p>
+
+<pre><code class='language-jsx with-tab'>
+import React from 'react';
+import { AppRouter } from './AppRouter';
+import { UserContext } from './UserContext';
+
+// Obviamente, debemos alimentar el value de nuestro contexto en nuestro componente raíz, como es este MainApp
+// Para así que pueda llegar a sus componentes hijos 
+export const MainApp = () =&gt; {
+
+  const usuario = {
+    id: 1462,
+    name: 'Gabriel',
+    email: 'gabriel@hotmail.com'
+  }
+
+  return (
+    &lt;div&gt;
+      &lt;UserContext.Provider value={ usuario }&gt;
+        &lt;AppRouter /&gt;
+      &lt;/UserContext.Provider&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+
+<p>Antes que nada. si revisamos las <b>React Developers Tools</b> en Chrome, veremos que ahora UserContext tiene los hijos y además en su <mark>value</mark> nuestro objeto del usuario.</p>
+
+<p><b>Importante:</b> Solo lo que englobemos con el contexto es lo que tendrá acceso a la información compartida del mismo. Como pusimos el <b>AppRouter</b> dentro, todas las navegaciones y renderizaciones de componentes a través de sus rutas, serán hijos de <b>UserContext</b> y tendrán acceso.</p>
+<h4>¡Ahora es momento de que la información llegue a un componente hijo!</h4>
+
+<b>1.</b> Ahora si usaremos el hook de React <mark class='mkf'>useContext()</mark>, así que lo importamos.
+<br>
+<b>2.</b> Importamos nuestro componente donde usamos el <mark class='mkf'>createContext()</mark>.
+<br>
+<b>3.</b> Le decimos a <mark class='mkf'>useContext()</mark> que <b>busque la instancia en el árbol de componentes donde nos encontramos</b> llamada &quot;UserContext&quot;, ya que la creamos y exportamos en el paso anterior con ese nombre.
+<br>
+
+<pre><code class='language-jsx with-tab'>
+import React, { useContext } from 'react';
+import { UserContext } from './UserContext';
+
+export const HomePage = () =&gt; {
+
+  const userContext = useContext(UserContext);
+  console.log(userContext); // Muestra nuestro objeto usuario compartido desde otro el componente MainApp
+
+  return (
+    &lt;div&gt;
+        &lt;h1&gt;HomePage&lt;/h1&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+
+<p>Cualquier modificación en el objeto, lo mutará y el cambio se verá reflejado en cualquier lugar. <i>Tal vez sea conveniente hacer 
+    una copia del objeto para evitar mutarlo si no nos interesa.
+</i></p>
